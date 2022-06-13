@@ -1,18 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width">
-	<title>Nano Trace Technologies</title>
-</head>
-<body class=" max-w-lg mx-auto min-h-screen">
-  <div class="flex flex-col justify-between">
-	<slot />
 
-  <footer class="text-center">
-    Nano Trace Technologies&trade; <br>
-    2006-2022
-  </footer>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Nano Trace Technologies</title>
+</head>
+
+<body>
+  <div class="min-h-screen flex flex-col ">
+
+    <div class="mx-8 flex-1">
+      <div class="max-w-xl mx-auto ">
+        <header class="mt-8">
+          <img src="/logo.jpg" alt="Nano Trace Technologies: nothing vanishes without a trace">
+        </header>
+        <main>
+          <slot />
+        </main>
+      </div>
+    </div>
+
+
+    <footer class="text-center bg-cover" style="background-image: url(/blau.webp)">
+      <p class="py-16 text-white">
+        Nano Trace Technologies&trade; <br>
+        2006-2022
+      </p>
+    </footer>
   </div>
 </body>
 
