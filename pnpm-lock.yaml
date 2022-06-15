@@ -3,7 +3,13 @@ lockfileVersion: 5.4
 specifiers:
   '@astrojs/tailwind': ^0.2.1
   astro: ^1.0.0-beta.20
+  mailgo: ^0.12.2
+  picosanity: ^4.0.0
   prettier-plugin-astro: ^0.0.12
+
+dependencies:
+  mailgo: 0.12.2
+  picosanity: 4.0.0
 
 devDependencies:
   '@astrojs/tailwind': 0.2.1
@@ -2061,6 +2067,10 @@ packages:
       sourcemap-codec: 1.4.8
     dev: true
 
+  /mailgo/0.12.2:
+    resolution: {integrity: sha512-iX4F3eOhPJ+12YlM51UNV8yTYwxHywaGP1C9Qaep/iNP2ZS+xzqHR7U3o+7HoCL19gZKysc7+MwgBEiRy8ogzA==}
+    dev: false
+
   /markdown-table/3.0.2:
     resolution: {integrity: sha512-y8j3a5/DkJCmS5x4dMCQL+OR0+2EAq3DOtio1COSHsmW2BGXnNCK3v12hJt1LrUz5iZH5g0LmuYOjDdI+czghA==}
     dev: true
@@ -2590,6 +2600,18 @@ packages:
     engines: {node: '>=10.5.0'}
     dev: true
 
+  /node-fetch/2.6.7:
+    resolution: {integrity: sha512-ZjMPFEfVx5j+y2yF35Kzx5sF7kDzxuDj6ziH4FFbOp87zKDZNx8yExJIb05OGF4Nlt9IHFIMBkRl41VdvcNdbQ==}
+    engines: {node: 4.x || >=6.0.0}
+    peerDependencies:
+      encoding: ^0.1.0
+    peerDependenciesMeta:
+      encoding:
+        optional: true
+    dependencies:
+      whatwg-url: 5.0.0
+    dev: false
+
   /node-fetch/3.2.6:
     resolution: {integrity: sha512-LAy/HZnLADOVkVPubaxHDft29booGglPFDr2Hw0J1AercRh01UiVFm++KMDnJeH9sHgNB4hsXPii7Sgym/sTbw==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
@@ -2781,6 +2803,15 @@ packages:
     resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}
     engines: {node: '>=8.6'}
     dev: true
+
+  /picosanity/4.0.0:
+    resolution: {integrity: sha512-WM0GXBEXNgA4v/NfGt5xiARLI1qMKLBJ3+OQkJ82MFbLduAi+xg6PdC5BVXVRnXzXRSnl9PkUh/hYRScu6/cqA==}
+    engines: {node: '>=12'}
+    dependencies:
+      node-fetch: 2.6.7
+    transitivePeerDependencies:
+      - encoding
+    dev: false
 
   /pify/2.3.0:
     resolution: {integrity: sha512-udgsAY+fTnvv7kI7aaxbqwWNb0AHiB0qBO89PZKPkoTmGOgdbrHDKD+0B2X4uTfJ/FT1R09r9gTsjUjNJotuog==}
@@ -3405,6 +3436,10 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
+  /tr46/0.0.3:
+    resolution: {integrity: sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==}
+    dev: false
+
   /trough/2.1.0:
     resolution: {integrity: sha512-AqTiAOLcj85xS7vQ8QkAV41hPDIJ71XJB4RCUrzo/1GM2CQwhkJGaf9Hgr7BOugMRpgGUrqRg/DrBDl4H40+8g==}
     dev: true
@@ -3726,6 +3761,17 @@ packages:
     resolution: {integrity: sha512-e0MO3wdXWKrLbL0DgGnUV7WHVuw9OUvL4hjgnPkIeEvESk74gAITi5G606JtZPp39cd8HA9VQzCIvA49LpPN5Q==}
     engines: {node: '>= 8'}
     dev: true
+
+  /webidl-conversions/3.0.1:
+    resolution: {integrity: sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==}
+    dev: false
+
+  /whatwg-url/5.0.0:
+    resolution: {integrity: sha512-saE57nupxk6v3HY35+jzBwYa0rKSy0XR8JSxZPwgLr7ys0IBzhGviA1/TUGJLmSVqs8pb9AnvICXEuOHLprYTw==}
+    dependencies:
+      tr46: 0.0.3
+      webidl-conversions: 3.0.1
+    dev: false
 
   /which-boxed-primitive/1.0.2:
     resolution: {integrity: sha512-bwZdv0AKLpplFY2KZRX6TvyuN7ojjr7lwkg6ml0roIy9YeuSr7JS372qlNW18UQYzgYK9ziGcerWqZOmEn9VNg==}

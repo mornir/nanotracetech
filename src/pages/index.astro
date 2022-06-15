@@ -1,18 +1,32 @@
 ---
+import sanity from '../sanity'
 import Layout from '../components/Layout.astro';
+
+const about = await sanity.fetch('*[_type == "about"][0]')
+
+const phone = about.phone.replaceAll('-', '')
 ---
 
 <Layout>
   <div class="mt-12">
 
-    <h1>Nano Trace Technologies</h1>
-
     <p>
-      <b>Nano Trace Technologies</b> carries out hydrogeological investigations and studies using state-of-the-art
-      techniques,
-      to conduct trace tests with fluorescent and other tracer substances, to analyze contaminated sites, to prepare
-      expert reports and remediation concepts, and to conduct research and provide services in these and related fields.
+      { about.description }
     </p>
+
+    <h2 class="mt-12 mb-2">Contact</h2>
+
+    <address class="not-italic ml-4 ">
+      { about.name }<br>
+      <span class="whitespace-pre-line">{ about.address }</span><br>
+      <a href={"tel:" + phone} target="_blank" class="underline my-2 inline-block">Give me a call</a><br>
+      <a href={ "mailto:" + about.email } target="_blank" class="underline">Send me an email</a>
+    </address>
 
   </div>
 </Layout>
+
+<script>
+  import mailgo from "mailgo";
+  mailgo();
+</script>
