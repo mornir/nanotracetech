@@ -45,5 +45,8 @@ const [emailAddress, emailDomain] = about.email.split('@')
 
 <script>
   import mailgo from "mailgo";
-  mailgo();
+
+  mailgo({
+    actions: { "whatsapp": false, "skype": false }
+  });
 </script>
