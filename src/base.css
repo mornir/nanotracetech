@@ -5,20 +5,24 @@
 @layer base {
   @font-face {
     font-family: 'Inter';
-    src: url('/Inter-Regular.ttf') format('ttf');
+    src: url('/Inter-Regular.ttf') format('truetype');
   }
 
   @font-face {
     font-family: 'BankGothic';
-    src: url('/BankGothic-Bold.ttf') format('ttf');
+    src: url('/BankGothic-Bold.ttf') format('truetype');
     font-weight: 700;
   }
 
-  h1 {
+  body {
+   font-family: 'Inter';
+  }
+
+  h1, h2, h3 {
     font-family: 'BankGothic';
   }
 
-  p {
-    font-family: 'Inter';
+  h2 {
+    @apply text-2xl font-bold;
   }
 }
