@@ -2,11 +2,10 @@
 import sanity from '../sanity'
 import Layout from '../components/Layout.astro';
 
-const about = await sanity.fetch('*[_type == "about"][0]')
+const about = await sanity.client.fetch('*[_type == "about"]{..., featuredPhotos[]->}[0]')
 
 const phone = about.phone.replaceAll('-', '')
 const [emailAddress, emailDomain] = about.email.split('@')
-
 ---
 
 <Layout>
@@ -15,6 +14,11 @@ const [emailAddress, emailDomain] = about.email.split('@')
     <p>
       { about.description }
     </p>
+
+
+    <div class="grid grid-cols-3 gap-4 mt-10">
+      { about.featuredPhotos.map(photo => <img src={sanity.urlFor(photo.img).width(400).height(500).url()} />)}
+    </div>
 
     <h2 class="mt-12 mb-2">Contact</h2>
 
