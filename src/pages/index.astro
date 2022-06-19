@@ -17,7 +17,8 @@ const [emailAddress, emailDomain] = about.email.split('@')
 
 
     <div class="grid grid-cols-3 gap-4 mt-10">
-      { about.featuredPhotos.map(photo => <img src={sanity.urlFor(photo.img).width(400).height(500).url()} />)}
+      { about.featuredPhotos.map(photo => <img width="400" height="500"
+        src={sanity.urlFor(photo.img).width(400).height(500).url()} />)}
     </div>
 
     <div class="flex flex-col items-end mt-4 text-xl gap-y-2">
