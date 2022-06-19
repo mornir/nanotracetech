@@ -1,5 +1,13 @@
 ---
 import '../base.css';
+
+export interface Props {
+  footerColor: string;
+  footerBgPosition?: string;
+}
+const { footerColor, footerBgPosition = '' } = Astro.props as Props;
+
+const year = new Date().getFullYear()
 ---
 
 <!DOCTYPE html>
@@ -32,10 +40,11 @@ import '../base.css';
     </div>
 
 
-    <footer class="text-center bg-cover mt-24" style="background-image: url(/blau.webp)">
-      <p class="py-12 text-white">
-        Nano Trace Technologies&trade; <br>
-        2006-2022
+    <footer class={"text-center bg-cover mt-24 " + footerBgPosition} style={`background-image:
+      url(/${footerColor}.webp)`}>
+      <p class=" py-12 text-white">
+      Nano Trace Technologies&trade; <br>
+      2006-{year}
       </p>
     </footer>
   </div>
