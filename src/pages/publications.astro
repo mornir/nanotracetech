@@ -3,7 +3,7 @@ import Layout from '../components/Layout.astro'
 import sanity from '../sanity'
 
 const query = /* groq */ `{
-  "publications": *[_type == 'publication'] { title, year, "file": pdf.asset->},
+  "publications": *[_type == 'publication'] | order(year desc) { title, year, "file": pdf.asset->},
   "cv": *[_type == 'about'][0].cv.asset->
 }`
 
@@ -13,16 +13,18 @@ const { cv, publications } = await sanity.client.fetch(query)
 <Layout>
   <div>
 
-    <h2>Publications</h2>
+    <h2 class="mb-2">Publications</h2>
 
-    <ul>
-      <li> {publications.map(p => <a href={p.file.url} target="_blank">{p.title} ({p.year}) [PDf]</a>)}</li>
+    <ul class="ml-4 flex flex-col gap-y-2">
+      {publications.map(p => <li><a class="hover:underline decoration-blue-700" href={p.file.url}
+          target="_blank">{p.title} ({p.year}) [PDf]</a></li>)}
     </ul>
 
 
-    <h2 class="mt-24">CV</h2>
+    <h2 class="mt-24 mb-2">CV</h2>
 
-    <a href={cv.url} target="_blank">NTT CV Otz short 2020 (A4) [PDf]</a>
+    <a href={cv.url} target="_blank" class="ml-4 hover:underline decoration-blue-700">NTT CV Otz short 2020 (A4)
+      [PDf]</a>
 
   </div>
 </Layout>
