@@ -1,10 +1,23 @@
 ---
-import Layout from '../components/Layout.astro';
+import Layout from '../components/Layout.astro'
 import sanity from '../sanity'
+
+const query = /* groq */ `*[_type == "sanity.imageAsset"]`
+
+const photos = await sanity.client.fetch(query)
 ---
 
 <Layout footerColor="red" footerBgPosition="bg-bottom">
-  <div>
-    <h1>Gallery coming soon</h1>
+  <div class="flex flex-wrap justify-center gap-x-8 gap-y-10">
+    {
+      photos.map((photo) => (
+        <img
+          width="250"
+          height="280"
+          src={sanity.urlFor(photo).width(500).height(560).url()}
+          alt="img"
+        />
+      ))
+    }
   </div>
 </Layout>

@@ -1,53 +1,56 @@
 ---
-import '../base.css';
+import '../base.css'
 
 export interface Props {
-  footerColor: string;
-  footerBgPosition?: string;
+  footerColor: string
+  footerBgPosition?: string
 }
-const { footerColor, footerBgPosition = '' } = Astro.props as Props;
+const { footerColor, footerBgPosition = '' } = Astro.props as Props
 
 const year = new Date().getFullYear()
 ---
 
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧪</text></svg>"
+    />
+    <title>Nano Trace Technologies</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width">
-  <link rel="icon"
-    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧪</text></svg>" />
-  <title>Nano Trace Technologies</title>
-</head>
-
-<body>
-  <div class="min-h-screen flex flex-col ">
-
-    <div class="mx-8 flex-1">
-      <div class="max-w-xl mx-auto ">
-
-
-        <header class="mt-8">
-          <a href="/">
-            <img src="/logo.jpg" alt="Nano Trace Technologies: nothing vanishes without a trace">
-          </a>
-        </header>
-        <main class="mt-12">
-          <slot />
-        </main>
+  <body>
+    <div class="min-h-screen flex flex-col">
+      <div class="mx-8 flex-1">
+        <div class="">
+          <header class="mt-8 max-w-xl mx-auto">
+            <a href="/">
+              <img
+                src="/logo.jpg"
+                alt="Nano Trace Technologies: nothing vanishes without a trace"
+              />
+            </a>
+          </header>
+          <main class="mt-12">
+            <slot />
+          </main>
+        </div>
       </div>
+
+      <footer
+        class={'text-center bg-cover mt-24 flex justify-center py-12 ' +
+          footerBgPosition}
+        style={`background-image:
+      url(/${footerColor}.webp)`}
+      >
+        <p class="text-white bg-gray-700/30 p-2">
+          Nano Trace Technologies&trade; <br />
+          2006-{year}
+        </p>
+      </footer>
     </div>
-
-
-    <footer class={"text-center bg-cover mt-24 flex justify-center py-12 " + footerBgPosition} style={`background-image:
-      url(/${footerColor}.webp)`}>
-      <p class=" text-white bg-gray-700/30 p-2 ">
-      Nano Trace Technologies&trade; <br>
-      2006-{year}
-      </p>
-    </footer>
-  </div>
-</body>
-
+  </body>
 </html>
