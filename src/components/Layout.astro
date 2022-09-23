@@ -1,11 +1,7 @@
 ---
 import '../base.css'
-
-export interface Props {
-  footerColor: string
-  footerBgPosition?: string
-}
-const { footerColor, footerBgPosition = '' } = Astro.props as Props
+import { Image } from '@astrojs/image/components'
+import logo from '../assets/logo.jpg'
 
 const year = new Date().getFullYear()
 ---
@@ -28,8 +24,8 @@ const year = new Date().getFullYear()
         <div class="">
           <header class="mt-8 max-w-xl mx-auto">
             <a href="/">
-              <img
-                src="/logo.jpg"
+              <Image
+                src={logo}
                 alt="Nano Trace Technologies: nothing vanishes without a trace"
               />
             </a>
@@ -40,13 +36,11 @@ const year = new Date().getFullYear()
         </div>
       </div>
 
-      <footer
-        class={'text-center bg-cover mt-24 flex justify-center py-12 ' +
-          footerBgPosition}
-        style={`background-image:
-      url(/${footerColor}.webp)`}
-      >
-        <p class="text-white bg-gray-700/30 p-2">
+      <footer class="mt-24 relative">
+        <slot name="img-footer" />
+        <p
+          class="text-white bg-gray-700/30 p-2 absolute top-1/2 left-1/2 text-center -translate-x-1/2 -translate-y-1/2"
+        >
           Nano Trace Technologies&trade; <br />
           2006-{year}
         </p>

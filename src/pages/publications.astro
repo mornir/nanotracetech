@@ -1,6 +1,8 @@
 ---
 import Layout from '../components/Layout.astro'
 import sanity from '../sanity'
+import { Image } from '@astrojs/image/components'
+import green from '../assets/green.webp'
 
 const query = /* groq */ `{
   "publications": *[_type == 'publication'] | order(year desc) { title, year, "file": pdf.asset->},
@@ -10,7 +12,7 @@ const query = /* groq */ `{
 const { cv, publications } = await sanity.client.fetch(query)
 ---
 
-<Layout footerColor="green" footerBgPosition="bg-bottom">
+<Layout>
   <div class="max-w-xl mx-auto">
     <h2>Publications</h2>
 
@@ -39,4 +41,11 @@ const { cv, publications } = await sanity.client.fetch(query)
       >NTT CV Otz short 2020 (A4) [PDf]</a
     >
   </div>
+
+  <Image
+    slot="img-footer"
+    src={green}
+    alt=""
+    class="h-40 w-screen object-cover object-bottom"
+  />
 </Layout>

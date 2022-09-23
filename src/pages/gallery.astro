@@ -1,13 +1,16 @@
 ---
 import Layout from '../components/Layout.astro'
 import sanity from '../sanity'
+import { Image } from '@astrojs/image/components'
+
+import red from '../assets/red.webp'
 
 const query = /* groq */ `*[_type == "sanity.imageAsset"]`
 
 const photos = await sanity.client.fetch(query)
 ---
 
-<Layout footerColor="red" footerBgPosition="bg-bottom">
+<Layout>
   <div class="flex flex-wrap justify-center gap-x-8 gap-y-10">
     {
       photos.map((photo) => (
@@ -21,4 +24,10 @@ const photos = await sanity.client.fetch(query)
       ))
     }
   </div>
+  <Image
+    slot="img-footer"
+    src={red}
+    alt=""
+    class="h-40 w-screen object-cover object-bottom"
+  />
 </Layout>

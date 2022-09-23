@@ -1,14 +1,15 @@
 ---
+import { Image } from '@astrojs/image/components'
 import sanity from '../sanity'
 import Layout from '../components/Layout.astro'
-
+import blue from '../assets/blue.webp'
 const about = await sanity.client.fetch('*[_type == "about"][0]')
 
 const phone = about.phone.replaceAll('-', '')
 const [emailAddress, emailDomain] = about.email.split('@')
 ---
 
-<Layout footerColor="blue">
+<Layout>
   <div class="max-w-xl mx-auto">
     <p>
       {about.description}
@@ -86,6 +87,12 @@ const [emailAddress, emailDomain] = about.email.split('@')
       </div>
     </address>
   </div>
+  <Image
+    slot="img-footer"
+    src={blue}
+    alt=""
+    class="h-40 w-screen object-cover"
+  />
 </Layout>
 
 <script>
