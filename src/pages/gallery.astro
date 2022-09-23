@@ -16,6 +16,7 @@ const photos = await sanity.client.fetch(query)
           height="280"
           src={sanity.urlFor(photo).width(500).height(560).url()}
           alt="img"
+          loading="lazy"
         />
       ))
     }
