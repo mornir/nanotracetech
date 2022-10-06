@@ -9,12 +9,12 @@
     "preview": "astro preview"
   },
   "devDependencies": {
-    "@astrojs/tailwind": "^2.0.1",
-    "astro": "^1.2.7",
-    "prettier-plugin-astro": "^0.5.4"
+    "@astrojs/tailwind": "^2.0.2",
+    "astro": "^1.4.4",
+    "prettier-plugin-astro": "^0.5.5"
   },
   "dependencies": {
-    "@astrojs/image": "^0.7.1",
+    "@astrojs/image": "^0.9.1",
     "@sanity/image-url": "^1.0.1",
     "mailgo": "^0.12.2",
     "picosanity": "^4.0.0",
