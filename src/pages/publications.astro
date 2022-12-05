@@ -16,16 +16,17 @@ const { cv, publications } = await sanity.client.fetch(query)
   <div class="max-w-xl mx-auto">
     <h2>Publications</h2>
 
-    <ul class="ml-4 flex flex-col gap-y-2">
+    <ul class="ml-4 flex flex-col gap-y-3">
       {
         publications.map((p) => (
           <li>
+          
             <a
               class="hover:underline decoration-blue-700"
               href={p.file.url}
               target="_blank"
             >
-              {p.title} ({p.year}) [PDf]
+            [{p.year}] {p.title}
             </a>
           </li>
         ))
@@ -38,7 +39,7 @@ const { cv, publications } = await sanity.client.fetch(query)
       href={cv.url}
       target="_blank"
       class="ml-4 hover:underline decoration-blue-700"
-      >NTT CV Otz short 2020 (A4) [PDf]</a
+      >Martin H. Otz</a
     >
   </div>
 
