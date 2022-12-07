@@ -11,16 +11,24 @@ const photos = await sanity.client.fetch(query)
 ---
 
 <Layout>
-  <div class="flex flex-wrap justify-center gap-x-8 gap-y-10">
+  <div class="flex flex-wrap justify-center gap-x-8 gap-y-10" id="gallery">
     {
       photos.map((photo) => (
-        <img
-          width="250"
-          height="280"
-          src={sanity.urlFor(photo).width(500).height(560).url()}
-          alt="img"
-          loading="lazy"
-        />
+        <a
+          target="_blank"
+          href={sanity.urlFor(photo).width(800).height(800).url()}
+          data-pswp-width="800"
+          data-pswp-height="800"
+          data-cropped="true"
+        >
+          <img
+            width="300"
+            height="300"
+            src={sanity.urlFor(photo).width(300).height(300).url()}
+            alt="img"
+            loading="lazy"
+          />
+        </a>
       ))
     }
   </div>
@@ -31,3 +39,19 @@ const photos = await sanity.client.fetch(query)
     class="h-40 w-screen object-cover object-bottom"
   />
 </Layout>
+
+<script type="module">
+  import PhotoSwipeLightbox from 'https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.3.4/photoswipe-lightbox.esm.min.js'
+
+  const lightbox = new PhotoSwipeLightbox({
+    gallery: '#gallery',
+    children: 'a',
+    pswpModule: () =>
+      import(
+        'https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.3.4/photoswipe.esm.min.js'
+      ),
+  })
+
+  console.log(lightbox)
+  lightbox.init()
+</script>
