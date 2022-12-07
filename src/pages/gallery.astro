@@ -11,14 +11,14 @@ const photos = await sanity.client.fetch(query)
 ---
 
 <Layout>
-  <div class="flex flex-wrap justify-center gap-x-8 gap-y-10" id="gallery">
+  <div class="flex flex-wrap justify-center gap-x-8 gap-y-8" id="gallery">
     {
       photos.map((photo) => (
         <a
           target="_blank"
-          href={sanity.urlFor(photo).width(800).height(800).url()}
-          data-pswp-width="800"
-          data-pswp-height="800"
+          href={photo.url}
+          data-pswp-width={photo.metadata.dimensions.width}
+          data-pswp-height={photo.metadata.dimensions.height}
           data-cropped="true"
         >
           <img
@@ -46,12 +46,23 @@ const photos = await sanity.client.fetch(query)
   const lightbox = new PhotoSwipeLightbox({
     gallery: '#gallery',
     children: 'a',
+    showHideAnimationType: 'none',
+    zoomAnimationDuration: false,
+    showAnimationDuration: 0,
+    hideAnimationDuration: 0,
     pswpModule: () =>
       import(
         'https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.3.4/photoswipe.esm.min.js'
       ),
   })
 
-  console.log(lightbox)
+  // completely disable animation:
+  // https://github.com/dimsemenov/PhotoSwipe/issues/1966#issuecomment-1305661937
+  lightbox.addFilter(
+    'useContentPlaceholder',
+    (useContentPlaceholder, content) => {
+      return false
+    }
+  )
   lightbox.init()
 </script>
